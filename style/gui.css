@@ -1,0 +1,67 @@
+/* stylelint-disable no-descending-specificity */
+:root {
+  --l: 0;
+  --c: 0;
+  --h: 0;
+}
+
+.lch-slider {
+  position: relative;
+  width: 21.25rem;
+  height: 2.5rem;
+  margin-block: 48px;
+  border: 0.0625rem solid rgb(0, 0, 0);
+}
+.lch-slider--val-l {
+  background-image: linear-gradient(to right, oklch(0 var(--c) calc(var(--h) * 1deg)), oklch(0.0166666667 var(--c) calc(var(--h) * 1deg)), oklch(0.0333333333 var(--c) calc(var(--h) * 1deg)), oklch(0.05 var(--c) calc(var(--h) * 1deg)), oklch(0.0666666667 var(--c) calc(var(--h) * 1deg)), oklch(0.0833333333 var(--c) calc(var(--h) * 1deg)), oklch(0.1 var(--c) calc(var(--h) * 1deg)), oklch(0.1166666667 var(--c) calc(var(--h) * 1deg)), oklch(0.1333333333 var(--c) calc(var(--h) * 1deg)), oklch(0.15 var(--c) calc(var(--h) * 1deg)), oklch(0.1666666667 var(--c) calc(var(--h) * 1deg)), oklch(0.1833333333 var(--c) calc(var(--h) * 1deg)), oklch(0.2 var(--c) calc(var(--h) * 1deg)), oklch(0.2166666667 var(--c) calc(var(--h) * 1deg)), oklch(0.2333333333 var(--c) calc(var(--h) * 1deg)), oklch(0.25 var(--c) calc(var(--h) * 1deg)), oklch(0.2666666667 var(--c) calc(var(--h) * 1deg)), oklch(0.2833333333 var(--c) calc(var(--h) * 1deg)), oklch(0.3 var(--c) calc(var(--h) * 1deg)), oklch(0.3166666667 var(--c) calc(var(--h) * 1deg)), oklch(0.3333333333 var(--c) calc(var(--h) * 1deg)), oklch(0.35 var(--c) calc(var(--h) * 1deg)), oklch(0.3666666667 var(--c) calc(var(--h) * 1deg)), oklch(0.3833333333 var(--c) calc(var(--h) * 1deg)), oklch(0.4 var(--c) calc(var(--h) * 1deg)), oklch(0.4166666667 var(--c) calc(var(--h) * 1deg)), oklch(0.4333333333 var(--c) calc(var(--h) * 1deg)), oklch(0.45 var(--c) calc(var(--h) * 1deg)), oklch(0.4666666667 var(--c) calc(var(--h) * 1deg)), oklch(0.4833333333 var(--c) calc(var(--h) * 1deg)), oklch(0.5 var(--c) calc(var(--h) * 1deg)), oklch(0.5166666667 var(--c) calc(var(--h) * 1deg)), oklch(0.5333333333 var(--c) calc(var(--h) * 1deg)), oklch(0.55 var(--c) calc(var(--h) * 1deg)), oklch(0.5666666667 var(--c) calc(var(--h) * 1deg)), oklch(0.5833333333 var(--c) calc(var(--h) * 1deg)), oklch(0.6 var(--c) calc(var(--h) * 1deg)), oklch(0.6166666667 var(--c) calc(var(--h) * 1deg)), oklch(0.6333333333 var(--c) calc(var(--h) * 1deg)), oklch(0.65 var(--c) calc(var(--h) * 1deg)), oklch(0.6666666667 var(--c) calc(var(--h) * 1deg)), oklch(0.6833333333 var(--c) calc(var(--h) * 1deg)), oklch(0.7 var(--c) calc(var(--h) * 1deg)), oklch(0.7166666667 var(--c) calc(var(--h) * 1deg)), oklch(0.7333333333 var(--c) calc(var(--h) * 1deg)), oklch(0.75 var(--c) calc(var(--h) * 1deg)), oklch(0.7666666667 var(--c) calc(var(--h) * 1deg)), oklch(0.7833333333 var(--c) calc(var(--h) * 1deg)), oklch(0.8 var(--c) calc(var(--h) * 1deg)), oklch(0.8166666667 var(--c) calc(var(--h) * 1deg)), oklch(0.8333333333 var(--c) calc(var(--h) * 1deg)), oklch(0.85 var(--c) calc(var(--h) * 1deg)), oklch(0.8666666667 var(--c) calc(var(--h) * 1deg)), oklch(0.8833333333 var(--c) calc(var(--h) * 1deg)), oklch(0.9 var(--c) calc(var(--h) * 1deg)), oklch(0.9166666667 var(--c) calc(var(--h) * 1deg)), oklch(0.9333333333 var(--c) calc(var(--h) * 1deg)), oklch(0.95 var(--c) calc(var(--h) * 1deg)), oklch(0.9666666667 var(--c) calc(var(--h) * 1deg)), oklch(0.9833333333 var(--c) calc(var(--h) * 1deg)), oklch(1 var(--c) calc(var(--h) * 1deg)));
+}
+.lch-slider--val-c {
+  background-image: linear-gradient(to right, oklch(var(--l) 0 calc(var(--h) * 1deg)), oklch(var(--l) 0.0066666667 calc(var(--h) * 1deg)), oklch(var(--l) 0.0133333333 calc(var(--h) * 1deg)), oklch(var(--l) 0.02 calc(var(--h) * 1deg)), oklch(var(--l) 0.0266666667 calc(var(--h) * 1deg)), oklch(var(--l) 0.0333333333 calc(var(--h) * 1deg)), oklch(var(--l) 0.04 calc(var(--h) * 1deg)), oklch(var(--l) 0.0466666667 calc(var(--h) * 1deg)), oklch(var(--l) 0.0533333333 calc(var(--h) * 1deg)), oklch(var(--l) 0.06 calc(var(--h) * 1deg)), oklch(var(--l) 0.0666666667 calc(var(--h) * 1deg)), oklch(var(--l) 0.0733333333 calc(var(--h) * 1deg)), oklch(var(--l) 0.08 calc(var(--h) * 1deg)), oklch(var(--l) 0.0866666667 calc(var(--h) * 1deg)), oklch(var(--l) 0.0933333333 calc(var(--h) * 1deg)), oklch(var(--l) 0.1 calc(var(--h) * 1deg)), oklch(var(--l) 0.1066666667 calc(var(--h) * 1deg)), oklch(var(--l) 0.1133333333 calc(var(--h) * 1deg)), oklch(var(--l) 0.12 calc(var(--h) * 1deg)), oklch(var(--l) 0.1266666667 calc(var(--h) * 1deg)), oklch(var(--l) 0.1333333333 calc(var(--h) * 1deg)), oklch(var(--l) 0.14 calc(var(--h) * 1deg)), oklch(var(--l) 0.1466666667 calc(var(--h) * 1deg)), oklch(var(--l) 0.1533333333 calc(var(--h) * 1deg)), oklch(var(--l) 0.16 calc(var(--h) * 1deg)), oklch(var(--l) 0.1666666667 calc(var(--h) * 1deg)), oklch(var(--l) 0.1733333333 calc(var(--h) * 1deg)), oklch(var(--l) 0.18 calc(var(--h) * 1deg)), oklch(var(--l) 0.1866666667 calc(var(--h) * 1deg)), oklch(var(--l) 0.1933333333 calc(var(--h) * 1deg)), oklch(var(--l) 0.2 calc(var(--h) * 1deg)), oklch(var(--l) 0.2066666667 calc(var(--h) * 1deg)), oklch(var(--l) 0.2133333333 calc(var(--h) * 1deg)), oklch(var(--l) 0.22 calc(var(--h) * 1deg)), oklch(var(--l) 0.2266666667 calc(var(--h) * 1deg)), oklch(var(--l) 0.2333333333 calc(var(--h) * 1deg)), oklch(var(--l) 0.24 calc(var(--h) * 1deg)), oklch(var(--l) 0.2466666667 calc(var(--h) * 1deg)), oklch(var(--l) 0.2533333333 calc(var(--h) * 1deg)), oklch(var(--l) 0.26 calc(var(--h) * 1deg)), oklch(var(--l) 0.2666666667 calc(var(--h) * 1deg)), oklch(var(--l) 0.2733333333 calc(var(--h) * 1deg)), oklch(var(--l) 0.28 calc(var(--h) * 1deg)), oklch(var(--l) 0.2866666667 calc(var(--h) * 1deg)), oklch(var(--l) 0.2933333333 calc(var(--h) * 1deg)), oklch(var(--l) 0.3 calc(var(--h) * 1deg)), oklch(var(--l) 0.3066666667 calc(var(--h) * 1deg)), oklch(var(--l) 0.3133333333 calc(var(--h) * 1deg)), oklch(var(--l) 0.32 calc(var(--h) * 1deg)), oklch(var(--l) 0.3266666667 calc(var(--h) * 1deg)), oklch(var(--l) 0.3333333333 calc(var(--h) * 1deg)), oklch(var(--l) 0.34 calc(var(--h) * 1deg)), oklch(var(--l) 0.3466666667 calc(var(--h) * 1deg)), oklch(var(--l) 0.3533333333 calc(var(--h) * 1deg)), oklch(var(--l) 0.36 calc(var(--h) * 1deg)), oklch(var(--l) 0.3666666667 calc(var(--h) * 1deg)), oklch(var(--l) 0.3733333333 calc(var(--h) * 1deg)), oklch(var(--l) 0.38 calc(var(--h) * 1deg)), oklch(var(--l) 0.3866666667 calc(var(--h) * 1deg)), oklch(var(--l) 0.3933333333 calc(var(--h) * 1deg)), oklch(var(--l) 0.4 calc(var(--h) * 1deg)));
+}
+.lch-slider--val-h {
+  background-image: linear-gradient(to right, oklch(var(--l) var(--c) 0deg), oklch(var(--l) var(--c) 6deg), oklch(var(--l) var(--c) 12deg), oklch(var(--l) var(--c) 18deg), oklch(var(--l) var(--c) 24deg), oklch(var(--l) var(--c) 30deg), oklch(var(--l) var(--c) 36deg), oklch(var(--l) var(--c) 42deg), oklch(var(--l) var(--c) 48deg), oklch(var(--l) var(--c) 54deg), oklch(var(--l) var(--c) 60deg), oklch(var(--l) var(--c) 66deg), oklch(var(--l) var(--c) 72deg), oklch(var(--l) var(--c) 78deg), oklch(var(--l) var(--c) 84deg), oklch(var(--l) var(--c) 90deg), oklch(var(--l) var(--c) 96deg), oklch(var(--l) var(--c) 102deg), oklch(var(--l) var(--c) 108deg), oklch(var(--l) var(--c) 114deg), oklch(var(--l) var(--c) 120deg), oklch(var(--l) var(--c) 126deg), oklch(var(--l) var(--c) 132deg), oklch(var(--l) var(--c) 138deg), oklch(var(--l) var(--c) 144deg), oklch(var(--l) var(--c) 150deg), oklch(var(--l) var(--c) 156deg), oklch(var(--l) var(--c) 162deg), oklch(var(--l) var(--c) 168deg), oklch(var(--l) var(--c) 174deg), oklch(var(--l) var(--c) 180deg), oklch(var(--l) var(--c) 186deg), oklch(var(--l) var(--c) 192deg), oklch(var(--l) var(--c) 198deg), oklch(var(--l) var(--c) 204deg), oklch(var(--l) var(--c) 210deg), oklch(var(--l) var(--c) 216deg), oklch(var(--l) var(--c) 222deg), oklch(var(--l) var(--c) 228deg), oklch(var(--l) var(--c) 234deg), oklch(var(--l) var(--c) 240deg), oklch(var(--l) var(--c) 246deg), oklch(var(--l) var(--c) 252deg), oklch(var(--l) var(--c) 258deg), oklch(var(--l) var(--c) 264deg), oklch(var(--l) var(--c) 270deg), oklch(var(--l) var(--c) 276deg), oklch(var(--l) var(--c) 282deg), oklch(var(--l) var(--c) 288deg), oklch(var(--l) var(--c) 294deg), oklch(var(--l) var(--c) 300deg), oklch(var(--l) var(--c) 306deg), oklch(var(--l) var(--c) 312deg), oklch(var(--l) var(--c) 318deg), oklch(var(--l) var(--c) 324deg), oklch(var(--l) var(--c) 330deg), oklch(var(--l) var(--c) 336deg), oklch(var(--l) var(--c) 342deg), oklch(var(--l) var(--c) 348deg), oklch(var(--l) var(--c) 354deg), oklch(var(--l) var(--c) 360deg));
+}
+.lch-slider__input {
+  position: absolute;
+  top: -0.0625rem;
+  left: -0.875rem;
+  width: calc(100% + 1.75rem);
+  height: calc(100% + 0.125rem);
+  margin: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  cursor: pointer;
+  background: transparent;
+}
+.lch-slider__input:focus {
+  outline: none;
+}
+.lch-slider__input::-webkit-slider-runnable-track {
+  height: 2.5rem;
+  border-radius: 0;
+}
+.lch-slider__input::-webkit-slider-thumb {
+  width: 1.75rem;
+  height: 1.75rem;
+  -webkit-appearance: none;
+          appearance: none;
+  cursor: grab;
+  background-color: oklch(var(--l) var(--c) calc(var(--h) * 1deg));
+  border: 4px solid #fff;
+  transform: rotate(45deg) translate(1.1490485194rem, 1.1490485194rem);
+}
+.lch-slider__input::-moz-range-track {
+  height: 2.5rem;
+  border-radius: 0;
+}
+.lch-slider__input::-moz-range-thumb {
+  width: 1.75rem;
+  height: 1.75rem;
+  -moz-appearance: none;
+       appearance: none;
+  cursor: grab;
+  background-color: oklch(var(--l) var(--c) calc(var(--h) * 1deg));
+  border: 4px solid #fff;
+  transform: rotate(45deg) translate(1.1490485194rem, 1.1490485194rem);
+}
