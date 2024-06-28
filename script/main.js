@@ -1,3 +1,6 @@
-import * as sliderXY from './sliderXY.js';
+import * as xySlider from './xySlider.js';
+import * as canvas from './canvas.js';
 
-sliderXY.init();
+xySlider.init();
+canvas.setup();
+canvas.draw();

@@ -16,40 +16,42 @@
 
 $thumb-size: 1.5rem;
 
-.slider {
-  &-xy {
-    position: relative;
-    grid-row: 1;
-    grid-column: 2;
-    aspect-ratio: 1 / 1;
-    border: 0.0625rem solid #000;
+.xy-slider {
+  position: relative;
+  grid-row: 1;
+  grid-column: 2;
+  aspect-ratio: 1 / 1;
+  border: 0.0625rem solid #000;
 
-    &__area {
-      position: absolute;
-      top: -0.5 * $thumb-size;
-      left: -0.5 * $thumb-size;
-      width: calc(100% + $thumb-size);
-      height: calc(100% + $thumb-size);
-      background-color: rgb(255 111 0 / 28.5%);
+  &__canvas {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__area {
+    position: absolute;
+    top: -0.5 * $thumb-size;
+    left: -0.5 * $thumb-size;
+    width: calc(100% + $thumb-size);
+    height: calc(100% + $thumb-size);
+  }
+
+  &__thumb {
+    position: absolute;
+    top: var(--slider-y);
+    left: var(--slider-x);
+    width: $thumb-size;
+    height: $thumb-size;
+    cursor: grab;
+    background-color: crimson;
+
+    &:hover {
+      background-color: darksalmon;
     }
 
-    &__thumb {
-      position: absolute;
-      top: var(--slider-y);
-      left: var(--slider-x);
-      width: $thumb-size;
-      height: $thumb-size;
-      cursor: grab;
-      background-color: crimson;
-
-      &:hover {
-        background-color: darksalmon;
-      }
-
-      &.pressed {
-        cursor: grabbing;
-        background-color: red;
-      }
+    &.pressed {
+      cursor: grabbing;
+      background-color: red;
     }
   }
 
