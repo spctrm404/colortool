@@ -1,9 +1,57 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+:root {
+  --slider-x: 0;
+  --slider-y: 0;
 }
 
-body {
-  margin: 1.5rem;
+.grid {
+  display: grid;
+  grid-template-rows: 1fr 2.5rem;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 1.25rem;
+  max-width: 50rem;
+  padding: 1.25rem;
+  margin-inline: auto;
+  background-color: aquamarine;
+}
+
+.slider-xy {
+  position: relative;
+  grid-row: 1;
+  grid-column: 2;
+  aspect-ratio: 1/1;
+  border: 0.0625rem solid #000;
+}
+.slider-xy__area {
+  position: absolute;
+  top: -0.75rem;
+  left: -0.75rem;
+  width: calc(100% + 1.5rem);
+  height: calc(100% + 1.5rem);
+  background-color: rgba(255, 111, 0, 0.285);
+}
+.slider-xy__thumb {
+  position: absolute;
+  top: var(--slider-y);
+  left: var(--slider-x);
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: grab;
+  background-color: crimson;
+}
+.slider-xy__thumb:hover {
+  background-color: darksalmon;
+}
+.slider-xy__thumb.pressed {
+  cursor: grabbing;
+  background-color: red;
+}
+.slider-x {
+  grid-row: 2;
+  grid-column: 2;
+  background-color: cadetblue;
+}
+.slider-y {
+  grid-row: 1;
+  grid-column: 1;
+  background-color: chocolate;
 }

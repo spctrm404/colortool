@@ -1,3 +1,3 @@
-import * as gui from './gui.js';
+import * as sliderXY from './sliderXY.js';
 
-gui.init();
+sliderXY.init();

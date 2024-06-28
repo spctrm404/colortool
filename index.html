@@ -3,50 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>color tool</title>
+    <title>Color Tool</title>
+    <link rel="stylesheet" href="./style/reset.css" />
     <link rel="stylesheet" href="./style/style.css" />
-    <link rel="stylesheet" href="./style/gui.css" />
     <script type="module" src="./script/main.js"></script>
   </head>
   <body>
-    <div class="lch-slider lch-slider--val-l">
-      <input
-        type="range"
-        id="l-slider"
-        class="lch-slider__input lch-slider__input--val-l"
-        name="lightness"
-        min="0"
-        max="1"
-        step="0.001"
-        data-css-property="--l"
-        data-variable-name="l"
-      />
-    </div>
-    <div class="lch-slider lch-slider--val-c">
-      <input
-        type="range"
-        id="c-slider"
-        class="lch-slider__input lch-slider__input--val-c"
-        name="chroma"
-        min="0"
-        max="0.4"
-        step="0.001"
-        data-css-property="--c"
-        data-variable-name="c"
-      />
-    </div>
-    <div class="lch-slider lch-slider--val-h">
-      <input
-        type="range"
-        id="h-slider"
-        class="lch-slider__input lch-slider__input--val-h"
-        name="hue"
-        min="0"
-        max="360"
-        step="1"
-        data-css-property="--h"
-        data-variable-name="h"
-      />
+    <div class="grid">
+      <div id="slider-xy" class="slider-xy">
+        <div id="slider-xy__area" class="slider-xy__area">
+          <div id="slider-xy__thumb" class="slider-xy__thumb"></div>
+        </div>
+      </div>
+      <div class="slider-x"></div>
+      <div class="slider-y"></div>
     </div>
   </body>
 </html>

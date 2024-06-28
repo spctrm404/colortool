@@ -2,7 +2,7 @@ import * as colour from './colour.js';
 
 const root = document.documentElement;
 const inputSliders = document.body.querySelectorAll('.lch-slider__input');
-export const values = { l: 0.7, c: 0.3, h: 0 };
+export const values = { l: 0.7, c: 0.37, h: 329 };
 
 export const init = () => {
   inputSliders.forEach((aSlider) => {
