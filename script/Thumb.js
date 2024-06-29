@@ -7,7 +7,6 @@ export class Thumb {
     'touchstart',
     'touchmove',
     'touchend',
-    'wheel',
   ];
 
   constructor(containerSelector, draggableSelector, connection) {
@@ -29,6 +28,19 @@ export class Thumb {
 
   addCallback = (callback, when) => {
     this.callbacks.push({ callback: callback, when: when });
+  };
+
+  setPosByNormal = (x, y) => {
+    this.pos.x = (this.container.clientWidth - this.draggable.clientWidth) * x;
+    this.pos.y =
+      (this.container.clientHeight - this.draggable.clientHeight) * y;
+
+    this.connection.forEach((v, k) => {
+      document.documentElement.style.setProperty(
+        this.container.dataset[`${k}`],
+        `${this.pos[`${v}`]}px`
+      );
+    });
   };
 
   onPointerDown = (e) => {

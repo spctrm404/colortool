@@ -28,6 +28,13 @@ const gamutCanvas = new GamutCanvas(
   '.color-picker__xy'
 );
 
+xySlider.setPosByNormal(
+  gamutCanvas.lightnessAtChromaMax,
+  1 - gamutCanvas.chromaMax
+);
+rangeSliderFrom.setPosByNormal(0, gamutCanvas.hueFrom / 360);
+rangeSliderTo.setPosByNormal(0, gamutCanvas.hueTo / 360);
+
 gamutCanvas.render();
 xySlider.addCallback(gamutCanvas.updateChromaMax, 'during');
 xySlider.addCallback(gamutCanvas.updateLightnessAtChromaMax, 'during');
