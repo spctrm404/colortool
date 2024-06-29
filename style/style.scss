@@ -1,8 +1,8 @@
 @use 'sass:math';
 
 :root {
-  --slider-from: 0;
-  --slider-to: 100px;
+  --slider-z-from: 0;
+  --slider-z-to: 100px;
   --slider-x: 0;
   --slider-y: 0;
 }
@@ -103,12 +103,12 @@
 
     @include thumb {
       &-from {
-        top: var(--slider-from);
+        top: var(--slider-z-from);
         left: 0;
       }
 
       &-to {
-        top: var(--slider-to);
+        top: var(--slider-z-to);
         left: 0;
       }
     }

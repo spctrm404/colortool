@@ -11,10 +11,11 @@ const xySlider = new Thumb(
 const rangeSliderFrom = new Thumb(
   '.color-picker__z__area',
   '.color-picker__z__thumb-from',
-  new Map([['cssVarFrom', 'y']])
+  new Map([['cssVarZFrom', 'y']])
 );
+// console.log(document.body.querySelector('.color-picker__z__area').dataset);
 const rangeSliderTo = new Thumb(
   '.color-picker__z__area',
   '.color-picker__z__thumb-to',
-  new Map([['cssVarTo', 'y']])
+  new Map([['cssVarZTo', 'y']])
 );
