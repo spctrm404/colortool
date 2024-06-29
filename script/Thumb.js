@@ -7,6 +7,7 @@ export class Thumb {
     'touchstart',
     'touchmove',
     'touchend',
+    'wheel',
   ];
 
   constructor(containerSelector, draggableSelector, connection) {
@@ -105,17 +106,37 @@ export class Thumb {
 
   preventDefaultEvents = () => {
     Thumb.preventDefaultEventList.forEach((eventName) => {
-      document.addEventListener(eventName, (e) => {
-        e.preventDefault();
-      });
+      if (eventName !== 'touchmove' && eventName !== 'wheel') {
+        document.addEventListener(eventName, (e) => {
+          e.preventDefault();
+        });
+      } else {
+        document.addEventListener(
+          eventName,
+          (e) => {
+            e.preventDefault();
+          },
+          { passive: false }
+        );
+      }
     });
   };
 
   allowDefaultEvents = () => {
     Thumb.preventDefaultEventList.forEach((eventName) => {
-      document.removeEventListener(eventName, (e) => {
-        e.preventDefault();
-      });
+      if (eventName !== 'touchmove' && eventName !== 'wheel') {
+        document.removeEventListener(eventName, (e) => {
+          e.preventDefault();
+        });
+      } else {
+        document.removeEventListener(
+          eventName,
+          (e) => {
+            e.preventDefault();
+          },
+          { passive: false }
+        );
+      }
     });
   };
 
