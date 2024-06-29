@@ -17,7 +17,7 @@ export class Thumb {
     this.isDragging = false;
     this.offset = { x: 0, y: 0 };
     this.pos = { x: 0, y: 0 };
-    this.callback = [];
+    this.callbacks = [];
     this.init();
   }
 
@@ -27,8 +27,8 @@ export class Thumb {
     });
   }
 
-  addCallback = (callback) => {
-    this.callback.push(callback);
+  addCallback = (callback, when) => {
+    this.callbacks.push({ callback: callback, when: when });
   };
 
   onPointerDown = (e) => {
@@ -51,6 +51,15 @@ export class Thumb {
     document.addEventListener('pointerup', (e) => {
       this.onPointerUp(e);
     });
+
+    if (this.callbacks.length === 0) return;
+    this.callbacks
+      .filter((elem) => {
+        return elem.when === 'start';
+      })
+      .forEach((elem) => {
+        elem.callback(this);
+      });
   };
 
   dragging = (e) => {
@@ -80,11 +89,6 @@ export class Thumb {
         `${this.pos[`${v}`]}px`
       );
     });
-
-    if (this.callback.length === 0) return;
-    this.callback.forEach((eachCallback) => {
-      eachCallback(this);
-    });
   };
 
   preventDefaultEvents = () => {
@@ -106,6 +110,15 @@ export class Thumb {
   onPointerMove = (e) => {
     if (!this.isDragging) return;
     this.dragging(e);
+
+    if (this.callbacks.length === 0) return;
+    this.callbacks
+      .filter((elem) => {
+        return elem.when === 'during';
+      })
+      .forEach((elem) => {
+        elem.callback(this);
+      });
   };
 
   onPointerUp = (e) => {
@@ -124,6 +137,15 @@ export class Thumb {
     document.removeEventListener('pointerup', (e) => {
       onPointerUp(e);
     });
+
+    if (this.callbacks.length === 0) return;
+    this.callbacks
+      .filter((elem) => {
+        return elem.when === 'end';
+      })
+      .forEach((elem) => {
+        elem.callback(this);
+      });
   };
 
   getNormal() {

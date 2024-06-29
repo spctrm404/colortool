@@ -29,7 +29,7 @@ const gamutCanvas = new GamutCanvas(
 );
 
 gamutCanvas.render();
-xySlider.addCallback(gamutCanvas.updateChromaMax);
-xySlider.addCallback(gamutCanvas.updateLightnessAtChromaMax);
-rangeSliderFrom.addCallback(gamutCanvas.updateHueFrom);
-rangeSliderTo.addCallback(gamutCanvas.updateHueTo);
+xySlider.addCallback(gamutCanvas.updateChromaMax, 'during');
+xySlider.addCallback(gamutCanvas.updateLightnessAtChromaMax, 'during');
+rangeSliderFrom.addCallback(gamutCanvas.updateHueFrom, 'end');
+rangeSliderTo.addCallback(gamutCanvas.updateHueTo, 'end');
