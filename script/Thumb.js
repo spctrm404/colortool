@@ -38,7 +38,7 @@ export class Thumb {
     this.connection.forEach((v, k) => {
       document.documentElement.style.setProperty(
         this.container.dataset[`${k}`],
-        `${this.pos[`${v}`]}px`
+        `${this.pos[`${v}`]}`
       );
     });
   };
@@ -98,7 +98,7 @@ export class Thumb {
     this.connection.forEach((v, k) => {
       document.documentElement.style.setProperty(
         this.container.dataset[`${k}`],
-        `${this.pos[`${v}`]}px`
+        `${this.pos[`${v}`]}`
       );
     });
   };

@@ -1,6 +1,6 @@
 :root {
   --slider-z-from: 0;
-  --slider-z-to: 10px;
+  --slider-z-to: 0;
   --slider-x: 0;
   --slider-y: 0;
 }
@@ -13,12 +13,13 @@
   width: -moz-fit-content;
   width: fit-content;
   padding: 2.5rem;
-  background-color: oklch(50% 0 0deg);
+  background-color: oklch(95% 0 0deg);
+  border-radius: 1.5rem;
 }
 .color-picker__xy {
   grid-row: 1;
   grid-column: 2;
-  border: 0.0625rem solid #000;
+  border: 0.0625rem solid oklch(70% 0 0deg);
   position: relative;
 }
 .color-picker__xy__canvas {
@@ -34,15 +35,15 @@
   width: 3rem;
   height: 3rem;
   cursor: grab;
-  top: var(--slider-y);
-  left: var(--slider-x);
+  top: calc(var(--slider-y) * 0.0625rem);
+  left: calc(var(--slider-x) * 0.0625rem);
 }
 .color-picker__xy__thumb::before {
   position: absolute;
   inset: 1rem;
   display: block;
   content: "";
-  border: 0.25rem solid #fff;
+  border: 0.125rem solid #fff;
   box-shadow: 0 0.0625rem 0.1875rem 0.0625rem rgba(0, 0, 0, 0.15), 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.3);
   transition: box-shadow ease-out 150ms;
   transform: rotate(45deg);
@@ -58,7 +59,8 @@
 .color-picker__z {
   grid-row: 1;
   grid-column: 1;
-  border: 0.0625rem solid #000;
+  background-image: linear-gradient(to bottom, oklch(70% 0.15 0deg), oklch(70% 0.15 6deg), oklch(70% 0.15 12deg), oklch(70% 0.15 18deg), oklch(70% 0.15 24deg), oklch(70% 0.15 30deg), oklch(70% 0.15 36deg), oklch(70% 0.15 42deg), oklch(70% 0.15 48deg), oklch(70% 0.15 54deg), oklch(70% 0.15 60deg), oklch(70% 0.15 66deg), oklch(70% 0.15 72deg), oklch(70% 0.15 78deg), oklch(70% 0.15 84deg), oklch(70% 0.15 90deg), oklch(70% 0.15 96deg), oklch(70% 0.15 102deg), oklch(70% 0.15 108deg), oklch(70% 0.15 114deg), oklch(70% 0.15 120deg), oklch(70% 0.15 126deg), oklch(70% 0.15 132deg), oklch(70% 0.15 138deg), oklch(70% 0.15 144deg), oklch(70% 0.15 150deg), oklch(70% 0.15 156deg), oklch(70% 0.15 162deg), oklch(70% 0.15 168deg), oklch(70% 0.15 174deg), oklch(70% 0.15 180deg), oklch(70% 0.15 186deg), oklch(70% 0.15 192deg), oklch(70% 0.15 198deg), oklch(70% 0.15 204deg), oklch(70% 0.15 210deg), oklch(70% 0.15 216deg), oklch(70% 0.15 222deg), oklch(70% 0.15 228deg), oklch(70% 0.15 234deg), oklch(70% 0.15 240deg), oklch(70% 0.15 246deg), oklch(70% 0.15 252deg), oklch(70% 0.15 258deg), oklch(70% 0.15 264deg), oklch(70% 0.15 270deg), oklch(70% 0.15 276deg), oklch(70% 0.15 282deg), oklch(70% 0.15 288deg), oklch(70% 0.15 294deg), oklch(70% 0.15 300deg), oklch(70% 0.15 306deg), oklch(70% 0.15 312deg), oklch(70% 0.15 318deg), oklch(70% 0.15 324deg), oklch(70% 0.15 330deg), oklch(70% 0.15 336deg), oklch(70% 0.15 342deg), oklch(70% 0.15 348deg), oklch(70% 0.15 354deg), oklch(70% 0.15 360deg));
+  border: 0.0625rem solid oklch(70% 0 0deg);
   position: relative;
 }
 .color-picker__z__canvas {
@@ -79,19 +81,25 @@
   cursor: grab;
 }
 .color-picker__z__thumb-from {
-  top: var(--slider-z-from);
+  top: calc(var(--slider-z-from) * 0.0625rem);
   left: 0;
 }
+.color-picker__z__thumb-from::before {
+  background-color: oklch(70% 0.15 calc(var(--slider-z-from) / 400 * 360deg));
+}
 .color-picker__z__thumb-to {
-  top: var(--slider-z-to);
+  top: calc(var(--slider-z-to) * 0.0625rem);
   left: 0;
+}
+.color-picker__z__thumb-to::before {
+  background-color: oklch(70% 0.15 calc(var(--slider-z-to) / 400 * 360deg));
 }
 .color-picker__z__thumb::before {
   position: absolute;
   inset: 1rem;
   display: block;
   content: "";
-  border: 0.25rem solid #fff;
+  border: 0.125rem solid #fff;
   box-shadow: 0 0.0625rem 0.1875rem 0.0625rem rgba(0, 0, 0, 0.15), 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.3);
   transition: box-shadow ease-out 150ms;
   transform: rotate(45deg);

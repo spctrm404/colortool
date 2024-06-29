@@ -1,8 +1,9 @@
+@use 'sass:list';
 @use 'sass:math';
 
 :root {
   --slider-z-from: 0;
-  --slider-z-to: 10px;
+  --slider-z-to: 0;
   --slider-x: 0;
   --slider-y: 0;
 }
@@ -14,9 +15,11 @@
   $gap: 2.5rem;
   $p: 2.5rem;
   $border-thickness: 0.0625rem;
+  $border-color: oklch(70% 0 0deg);
   $thumb-display-size: 1rem;
   $thumb-size: 3rem;
-  $thumb-border-thickness: 0.25rem;
+  $thumb-border-thickness: 0.125rem;
+  $gradient-resolution: 60;
 
   display: grid;
   grid-template-rows: calc($canvas-height + 2 * $border-thickness) calc(
@@ -28,7 +31,8 @@
   gap: $gap;
   width: fit-content;
   padding: $p;
-  background-color: oklch(50% 0 0deg);
+  background-color: oklch(95% 0 0deg);
+  border-radius: 1.5rem;
 
   @mixin canvas() {
     &__canvas {
@@ -81,22 +85,33 @@
   &__xy {
     grid-row: 1;
     grid-column: 2;
-    border: $border-thickness solid #000;
+    border: $border-thickness solid $border-color;
 
     @include canvas;
     @include area {
       inset: -0.5 * $thumb-size;
     }
     @include thumb {
-      top: var(--slider-y);
-      left: var(--slider-x);
+      top: calc(var(--slider-y) * 0.0625rem);
+      left: calc(var(--slider-x) * 0.0625rem);
     }
   }
 
   &__z {
+    $gradient-steps: ();
+    @for $cnt from 0 through $gradient-resolution {
+      $h: $cnt * math.div(360, $gradient-resolution);
+      $gradient-steps: list.join(
+        $gradient-steps,
+        oklch(70% 0.15 #{$h}deg),
+        $separator: comma
+      );
+    }
+
     grid-row: 1;
     grid-column: 1;
-    border: $border-thickness solid #000;
+    background-image: linear-gradient(to bottom, $gradient-steps);
+    border: $border-thickness solid $border-color;
 
     @include canvas;
     @include area {
@@ -108,13 +123,29 @@
 
     @include thumb {
       &-from {
-        top: var(--slider-z-from);
+        top: calc(var(--slider-z-from) * 0.0625rem);
         left: 0;
+
+        &::before {
+          $unitless-h: math.div($canvas-height, 1rem) * 16;
+
+          background-color: oklch(
+            70% 0.15 calc(var(--slider-z-from) / $unitless-h * 360deg)
+          );
+        }
       }
 
       &-to {
-        top: var(--slider-z-to);
+        top: calc(var(--slider-z-to) * 0.0625rem);
         left: 0;
+
+        &::before {
+          $unitless-h: math.div($canvas-height, 1rem) * 16;
+
+          background-color: oklch(
+            70% 0.15 calc(var(--slider-z-to) / $unitless-h * 360deg)
+          );
+        }
       }
     }
   }
