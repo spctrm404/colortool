@@ -9,15 +9,28 @@
     <script type="module" src="./script/main.js"></script>
   </head>
   <body>
-    <div class="grid">
-      <div id="xy-slider" class="xy-slider">
-        <canvas id="xy-slider__canvas" class="xy-slider__canvas"></canvas>
-        <div id="xy-slider__area" class="xy-slider__area">
-          <div id="xy-slider__thumb" class="xy-slider__thumb"></div>
+    <div id="color-picker" class="color-picker">
+      <div class="color-picker__xy">
+        <canvas class="color-picker__xy__canvas"></canvas>
+        <div
+          class="color-picker__xy__area"
+          data-css-var-x="--slider-x"
+          data-css-var-y="--slider-y"
+        >
+          <div class="color-picker__xy__thumb"></div>
         </div>
       </div>
-      <div class="xy-slider-x"></div>
-      <div class="xy-slider-y"></div>
+      <div class="color-picker__z">
+        <canvas class="color-picker__z__canvas"></canvas>
+        <div
+          class="color-picker__z__area"
+          data-css-var-from="--slider-from"
+          data-css-var-to="--slider-to"
+        >
+          <div class="color-picker__z__thumb color-picker__z__thumb-from"></div>
+          <div class="color-picker__z__thumb color-picker__z__thumb-to"></div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

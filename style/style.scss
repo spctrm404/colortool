@@ -1,69 +1,116 @@
+@use 'sass:math';
+
 :root {
+  --slider-from: 0;
+  --slider-to: 100px;
   --slider-x: 0;
   --slider-y: 0;
 }
 
-.grid {
+.color-picker {
+  $canvas-width: 25rem;
+  $canvas-height: 25rem;
+  $slider-height: 2.5rem;
+  $g: 1.25rem;
+  $p: 1.25rem;
+  $thumb-display-size: 1rem;
+  $thumb-size: 3rem;
+  $b: 0.0625rem;
+
   display: grid;
-  grid-template-rows: 1fr 2.5rem;
-  grid-template-columns: 2.5rem 1fr;
-  gap: 1.25rem;
-  max-width: 30rem;
-  padding: 1.25rem;
-  margin-inline: auto;
-  background-color: aquamarine;
-}
+  grid-template-rows: calc($canvas-height + 2 * $b) calc(
+      $slider-height + 2 * $b
+    );
+  grid-template-columns: calc($slider-height + 2 * $b) calc(
+      $canvas-width + 2 * $b
+    );
+  gap: $g;
+  width: fit-content;
+  padding: $g;
+  background-color: oklch(50% 0 0deg);
 
-$thumb-size: 1.5rem;
-
-.xy-slider {
-  position: relative;
-  grid-row: 1;
-  grid-column: 2;
-  aspect-ratio: 2 / 1;
-  border: 0.0625rem solid #000;
-
-  &__canvas {
-    width: 100%;
-    height: 100%;
-  }
-
-  &__area {
-    position: absolute;
-    top: -0.5 * $thumb-size;
-    left: -0.5 * $thumb-size;
-    width: calc(100% + $thumb-size);
-    height: calc(100% + $thumb-size);
-  }
-
-  &__thumb {
-    position: absolute;
-    top: var(--slider-y);
-    left: var(--slider-x);
-    width: $thumb-size;
-    height: $thumb-size;
-    cursor: grab;
-    background-color: crimson;
-
-    &:hover {
-      background-color: darksalmon;
-    }
-
-    &.pressed {
-      cursor: grabbing;
-      background-color: red;
+  @mixin canvas() {
+    &__canvas {
+      width: 100%;
+      height: 100%;
     }
   }
 
-  &-x {
-    grid-row: 2;
+  @mixin area() {
+    position: relative;
+
+    &__area {
+      position: absolute;
+      @content;
+    }
+  }
+
+  @mixin thumb() {
+    &__thumb {
+      $selector: #{&};
+
+      position: absolute;
+      width: $thumb-size;
+      height: $thumb-size;
+      cursor: grab;
+
+      @content;
+
+      &::before {
+        position: absolute;
+        inset: calc(0.5 * ($thumb-size - $thumb-display-size));
+        display: block;
+        content: '';
+        border: 4px solid #000;
+        transform: rotate(45deg);
+        @at-root #{$selector}:hover::before {
+          border-color: aliceblue;
+        }
+        @at-root #{$selector}.pressed::before {
+          border-color: red;
+        }
+      }
+    }
+  }
+
+  &__xy {
+    grid-row: 1;
     grid-column: 2;
-    background-color: cadetblue;
+    border: $b solid #000;
+
+    @include canvas;
+    @include area {
+      inset: -0.5 * $thumb-size;
+    }
+    @include thumb {
+      top: var(--slider-y);
+      left: var(--slider-x);
+    }
   }
 
-  &-y {
+  &__z {
     grid-row: 1;
     grid-column: 1;
-    background-color: chocolate;
+    border: $b solid #000;
+
+    @include canvas;
+    @include area {
+      top: -0.5 * $thumb-size;
+      bottom: -0.5 * $thumb-size;
+      left: -0.5 * $thumb-size;
+      width: $thumb-size;
+    }
+
+    @include thumb {
+      &-from {
+        top: var(--slider-from);
+        left: 0;
+      }
+
+      &-to {
+        top: var(--slider-to);
+        left: 0;
+      }
+    }
   }
 }
