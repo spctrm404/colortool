@@ -9,17 +9,27 @@ export class Thumb {
     'touchend',
     'wheel',
   ];
+
   constructor(containerSelector, draggableSelector, connection) {
     this.container = document.body.querySelector(containerSelector);
     this.draggable = document.body.querySelector(draggableSelector);
-    this.isDragging;
+    this.connection = connection;
+    this.isDragging = false;
     this.offset = { x: 0, y: 0 };
     this.pos = { x: 0, y: 0 };
+    this.callback = [];
+    this.init();
+  }
+
+  init() {
     this.draggable.addEventListener('pointerdown', (e) => {
       this.onPointerDown(e);
     });
-    this.connection = connection;
   }
+
+  addCallback = (callback) => {
+    this.callback.push(callback);
+  };
 
   onPointerDown = (e) => {
     if (e.target !== this.draggable && !this.draggable.contains(e.target))
@@ -70,6 +80,11 @@ export class Thumb {
         `${this.pos[`${v}`]}px`
       );
     });
+
+    if (this.callback.length === 0) return;
+    this.callback.forEach((eachCallback) => {
+      eachCallback(this);
+    });
   };
 
   preventDefaultEvents = () => {
@@ -112,9 +127,11 @@ export class Thumb {
   };
 
   getNormal() {
-    return [
-      this.pos.x / (this.container.clientWidth - this.draggable.clientWidth),
-      this.pos.y / (this.container.clientHeight - this.draggable.clientHeight),
-    ];
+    return {
+      x: this.pos.x / (this.container.clientWidth - this.draggable.clientWidth),
+      y:
+        this.pos.y /
+        (this.container.clientHeight - this.draggable.clientHeight),
+    };
   }
 }

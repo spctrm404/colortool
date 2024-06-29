@@ -2,7 +2,7 @@
 
 :root {
   --slider-z-from: 0;
-  --slider-z-to: 100px;
+  --slider-z-to: 10px;
   --slider-x: 0;
   --slider-y: 0;
 }
@@ -10,23 +10,24 @@
 .color-picker {
   $canvas-width: 25rem;
   $canvas-height: 25rem;
-  $slider-height: 2.5rem;
-  $g: 1.25rem;
-  $p: 1.25rem;
+  $slider-thickness: 2.5rem;
+  $gap: 2.5rem;
+  $p: 2.5rem;
+  $border-thickness: 0.0625rem;
   $thumb-display-size: 1rem;
   $thumb-size: 3rem;
-  $b: 0.0625rem;
+  $thumb-border-thickness: 0.25rem;
 
   display: grid;
-  grid-template-rows: calc($canvas-height + 2 * $b) calc(
-      $slider-height + 2 * $b
+  grid-template-rows: calc($canvas-height + 2 * $border-thickness) calc(
+      $slider-thickness + 2 * $border-thickness
     );
-  grid-template-columns: calc($slider-height + 2 * $b) calc(
-      $canvas-width + 2 * $b
+  grid-template-columns: calc($slider-thickness + 2 * $border-thickness) calc(
+      $canvas-width + 2 * $border-thickness
     );
-  gap: $g;
+  gap: $gap;
   width: fit-content;
-  padding: $g;
+  padding: $p;
   background-color: oklch(50% 0 0deg);
 
   @mixin canvas() {
@@ -61,13 +62,17 @@
         inset: calc(0.5 * ($thumb-size - $thumb-display-size));
         display: block;
         content: '';
-        border: 4px solid #000;
+        border: $thumb-border-thickness solid #fff;
+        box-shadow: 0 0.0625rem 0.1875rem 0.0625rem rgb(0 0 0 / 15%),
+          0 0.0625rem 0.125rem 0 rgb(0 0 0 / 30%);
+        transition: box-shadow ease-out 150ms;
         transform: rotate(45deg);
         @at-root #{$selector}:hover::before {
-          border-color: aliceblue;
+          box-shadow: 0 0.25rem 0.5rem 0.1875rem rgb(0 0 0 / 15%),
+            0 0.0625rem 0.1875rem 0 rgb(0 0 0 / 30%);
         }
         @at-root #{$selector}.pressed::before {
-          border-color: red;
+          box-shadow: 0 0 0 0 rgb(0 0 0 / 15%), 0 0 0 0 rgb(0 0 0 / 30%);
         }
       }
     }
@@ -76,7 +81,7 @@
   &__xy {
     grid-row: 1;
     grid-column: 2;
-    border: $b solid #000;
+    border: $border-thickness solid #000;
 
     @include canvas;
     @include area {
@@ -91,7 +96,7 @@
   &__z {
     grid-row: 1;
     grid-column: 1;
-    border: $b solid #000;
+    border: $border-thickness solid #000;
 
     @include canvas;
     @include area {
@@ -112,5 +117,13 @@
         left: 0;
       }
     }
+  }
+
+  &__numbers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-row: 2;
+    grid-column: 1 / -1;
+    gap: $gap;
   }
 }

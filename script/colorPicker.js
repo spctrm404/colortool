@@ -1,4 +1,7 @@
 import { Thumb } from './Thumb.js';
+import { GamutCanvas } from './GamutCanvas.js';
+
+let isRanged = false;
 
 const xySlider = new Thumb(
   '.color-picker__xy__area',
@@ -19,3 +22,14 @@ const rangeSliderTo = new Thumb(
   '.color-picker__z__thumb-to',
   new Map([['cssVarZTo', 'y']])
 );
+
+const gamutCanvas = new GamutCanvas(
+  '.color-picker__xy__canvas',
+  '.color-picker__xy'
+);
+
+gamutCanvas.render();
+xySlider.addCallback(gamutCanvas.updateChromaMax);
+xySlider.addCallback(gamutCanvas.updateLightnessAtChromaMax);
+rangeSliderFrom.addCallback(gamutCanvas.updateHueFrom);
+rangeSliderTo.addCallback(gamutCanvas.updateHueTo);
