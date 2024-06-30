@@ -10,6 +10,10 @@ export class Thumb {
     'wheel',
   ];
 
+  static preventDefaultHandler = (e) => {
+    e.preventDefault();
+  };
+
   constructor(containerSelector, draggableSelector, connection) {
     this.container = document.body.querySelector(containerSelector);
     this.draggable = document.body.querySelector(draggableSelector);
@@ -22,9 +26,7 @@ export class Thumb {
   }
 
   init() {
-    this.draggable.addEventListener('pointerdown', (e) => {
-      this.onPointerDown(e);
-    });
+    this.draggable.addEventListener('pointerdown', this.onPointerDown);
   }
 
   addCallback = (callback, when) => {
@@ -58,12 +60,8 @@ export class Thumb {
     this.dragging(e);
 
     this.preventDefaultEvents();
-    document.addEventListener('pointermove', (e) => {
-      this.onPointerMove(e);
-    });
-    document.addEventListener('pointerup', (e) => {
-      this.onPointerUp(e);
-    });
+    document.addEventListener('pointermove', this.onPointerMove);
+    document.addEventListener('pointerup', this.onPointerUp);
 
     if (this.callbacks.length === 0) return;
     this.callbacks
@@ -107,17 +105,11 @@ export class Thumb {
   preventDefaultEvents = () => {
     Thumb.preventDefaultEventList.forEach((eventName) => {
       if (eventName !== 'touchmove' && eventName !== 'wheel') {
-        document.addEventListener(eventName, (e) => {
-          e.preventDefault();
-        });
+        document.addEventListener(eventName, Thumb.preventDefaultHandler);
       } else {
-        document.addEventListener(
-          eventName,
-          (e) => {
-            e.preventDefault();
-          },
-          { passive: false }
-        );
+        document.addEventListener(eventName, Thumb.preventDefaultHandler, {
+          passive: false,
+        });
       }
     });
   };
@@ -125,17 +117,11 @@ export class Thumb {
   allowDefaultEvents = () => {
     Thumb.preventDefaultEventList.forEach((eventName) => {
       if (eventName !== 'touchmove' && eventName !== 'wheel') {
-        document.removeEventListener(eventName, (e) => {
-          e.preventDefault();
-        });
+        document.removeEventListener(eventName, Thumb.preventDefaultHandler);
       } else {
-        document.removeEventListener(
-          eventName,
-          (e) => {
-            e.preventDefault();
-          },
-          { passive: false }
-        );
+        document.removeEventListener(eventName, Thumb.preventDefaultHandler, {
+          passive: false,
+        });
       }
     });
   };
@@ -164,12 +150,8 @@ export class Thumb {
     this.dragging(e);
 
     this.allowDefaultEvents();
-    document.removeEventListener('pointermove', (e) => {
-      onPointerMove(e);
-    });
-    document.removeEventListener('pointerup', (e) => {
-      onPointerUp(e);
-    });
+    document.removeEventListener('pointermove', this.onPointerMove);
+    document.removeEventListener('pointerup', this.onPointerUp);
 
     if (this.callbacks.length === 0) return;
     this.callbacks
