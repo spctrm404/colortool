@@ -6,6 +6,8 @@ export const testFunc = (oklchVal) => {
   const inputColour = `oklch(${oklchVal.l} ${oklchVal.c} ${oklchVal.h})`;
   console.log(`inputColour`, inputColour);
 
+  console.log(culori.parse(inputColour));
+
   const displayableRgb = culori.displayable(inputColour);
   console.log(`displayableRgb`, displayableRgb);
 
